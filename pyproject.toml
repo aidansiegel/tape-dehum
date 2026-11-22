@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tape-dehum"
+version = "1.0.0"
+description = "Subtract mains hum, video buzz and whine tones from tape transfers instead of filtering them"
+readme = "README.md"
+license = { text = "AGPL-3.0-or-later" }
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy", "soundfile"]
+
+[project.optional-dependencies]
+denoise = ["deepfilternet", "torch", "torchaudio"]
+
+[project.scripts]
+tape-dehum = "tape_dehum:cli"
+tape-denoise = "tape_denoise:cli"
+
+[tool.setuptools]
+py-modules = ["tape_dehum", "tape_denoise"]
